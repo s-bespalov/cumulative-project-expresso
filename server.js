@@ -15,6 +15,9 @@ app.use(cors())
 const morgan = require('morgan')
 app.use(morgan('dev'))
 
+const apiRouter = require('./api/api')
+app.use('/api', apiRouter)
+
 app.listen(port)
 
 module.exports = app
