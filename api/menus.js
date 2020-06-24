@@ -19,7 +19,7 @@ menusRouter.get('/', (req, res, next) => {
   })
 })
 
-menusRouter.post('/', (req, res, next) => { 
+menusRouter.post('/', (req, res, next) => {
   const menu = req.body.menu
   if (!isValidMenu(menu)) {
     return res.sendStatus(400)
@@ -104,5 +104,8 @@ menusRouter.delete('/:menuId', (req, res, next) => {
     })
   })
 })
+
+const menuItemRouter = require('./menu-items')
+menusRouter.use('/:menuId/menu-items', menuItemRouter)
 
 module.exports = menusRouter
